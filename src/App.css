@@ -1,0 +1,29 @@
+
+
+
+.progress_message{
+  width:0%;
+  animation: progress 3s infinite ;
+  -webkit-animation: progress 3s infinite ;
+}
+@keyframes progress {
+  from{
+    width: 0;
+  }
+  to{
+    width: 100%;
+  }
+}
+.primary {
+  color: var(--primary-color);
+}
+.button {
+  background: var(--bg-button);
+  padding: 0.5em 1.5em;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}

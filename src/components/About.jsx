@@ -6,7 +6,7 @@ export default function About() {
     >
       <div className="flex items-center justify-center flex-1">
         <img
-          src="/src/assets/honey.png"
+          src="https://res.cloudinary.com/dvvfnrprr/image/upload/v1784017596/honey_tbr4gg.png"
           alt="about"
           className=" object-cover rounded-lg
       md:min-h-[600px] md:w-[500px] w-[260px] h-[400px] rotate-3
@@ -30,7 +30,7 @@ export default function About() {
         </p>
         {/* experience stats */}
 
-          <div className="stats flex justify-center md:justify-start gap-20 p-3">
+        <div className="stats flex justify-center md:justify-start gap-20 p-3">
           <div>
             <span className="flex flex-col items-center text-4xl font-bold text-amber-900">
               %100
@@ -43,8 +43,7 @@ export default function About() {
             </span>
             <span> عام من الخبرة</span>
           </div>
-
-          </div>
+        </div>
       </div>
     </section>
   );

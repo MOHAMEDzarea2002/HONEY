@@ -1,6 +1,8 @@
 import { PiShootingStar } from 'react-icons/pi';
-import Video from '../assets/Honey_dripping_from_dipper_202605291937.mp4';
+  const video_hero =
+    'https://res.cloudinary.com/dvvfnrrprr/video/upload/w_1280,q_auto,f_auto,vc_auto/Honey_dripping_from_dipper_202605291937_rldtjy.mp4';
 export default function HeroSection() {
+
   return (
     <section>
       <div className="hero-section     z-30">
@@ -16,8 +18,15 @@ export default function HeroSection() {
           "
           ></div>
 
-          <video className=" w-full object-cover h-[calc(100dvh-40px)] " autoPlay loop muted>
-            <source src={Video} type="video/mp4" />
+          <video
+            className=" w-full object-cover h-[calc(100dvh-40px)] "
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={video_hero} type="video/mp4" />
           </video>
 
           {/* Content */}
@@ -39,7 +48,6 @@ export default function HeroSection() {
                 خيارًا مثاليًا لعشاق العسل الطبيعي والصحي.
               </p>
               <div className="buttons flex space-x-4">
-
                 <a
                   href="#منتجاتنا"
                   className="button  hover:bg-amber-100 cursor-pointer  text-black"

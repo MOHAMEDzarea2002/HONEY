@@ -14,7 +14,7 @@ const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) =
 
   return (
     <div className={`transition-opacity duration-200 ${isRemoving ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="flex items-center justify-between bg-white rounded-xl border border-gray-100 hover:border-gray-200 transition-colors p-3 gap-3">
+      <div className="flex items-center justify-between bg-white rounded-xl border border-gray-100 hover:border-gray-200 transition-colors p-3 gap-3 my-2">
         {/* image product */}
         <img
           src={product.image}
@@ -24,7 +24,7 @@ const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) =
 
         {/* information Product*/}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate">{product.title}</p>
+          <p className="text-sm font-medium text-gray-900 truncate">{product.quantity}</p>
           <div className="flex items-center gap-2 mt-1">
             {product.discounts && (
               <>

@@ -1,8 +1,8 @@
-// useHooks 
+// useHooks
 import { getProducts } from '../services/Product.Service';
 import { useFetch } from '../Hooks/useFetch';
 // component
-import ProductCart from './ProductCart';
+import CardProduct from './CardProduct';
 export default function Products() {
   const { data: product } = useFetch(getProducts);
 
@@ -18,7 +18,7 @@ export default function Products() {
       {/*  */}
       <div className="products container mx-auto mt-6 flex flex-wrap justify-center gap-6">
         {product?.map((product, index) => (
-          <ProductCart key={index} product={product} />
+          <CardProduct key={index} product={product} />
         ))}
       </div>
     </section>

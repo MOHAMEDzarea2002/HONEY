@@ -87,7 +87,7 @@ const submitOrder = async (orderData) =>{
     return { totalPrice, subtotalPrice, discount };
   },[cart]);
 
-
+console.log(cart.map((prod) => prod));
 
 
 
@@ -112,7 +112,7 @@ const submitOrder = async (orderData) =>{
             {cart?.map((product, index) => (
               <CartCard
                 key={index}
-                isRemoving={removingIDd == product.idProduct}
+                isRemoving={removingIDd == product.id}
                 product={product}
                 onRemove={removeFromCart}
                 onIncrement={incrementQuantity}

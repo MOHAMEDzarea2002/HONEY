@@ -1,13 +1,13 @@
 import {useCart} from "../Hooks/useCart"
 import { FaCartShopping } from 'react-icons/fa6';
 
-export default function ProductCart({product}) {
+export default function CardProduct({product}) {
   const { addToCart } = useCart();
 
   return (
     <div>
       <div className="product-card w-[300px] bg-white dark:bg-amber-100/5  rounded-lg shadow-md overflow-hidden">
-        <img src={product.image} alt="منتج العسل" className="w-full h-[250px] object-cover" />
+        <img src={product.image} loading="lazy" alt="منتج العسل" className="w-full h-[250px] object-cover" />
 
         <div className="p-4 ">
           <h2 className="text-md font-bold text-black dark:text-white mb-2">{product.title}</h2>

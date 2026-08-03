@@ -1,8 +1,8 @@
 import { PiShootingStar } from 'react-icons/pi';
-  const video_hero =
-    'https://res.cloudinary.com/dvvfnrrprr/video/upload/w_1280,q_auto,f_auto,vc_auto/Honey_dripping_from_dipper_202605291937_rldtjy.mp4';
-export default function HeroSection() {
 
+export default function HeroSection() {
+const video_hero =
+  'https://res.cloudinary.com/dvvfnrprr/video/upload/w_1280,q_auto,f_auto,vc_auto/v1785784794/Honey_dripping_from_dipper_202605291937_rldtjy.mp4';
   return (
     <section>
       <div className="hero-section     z-30">

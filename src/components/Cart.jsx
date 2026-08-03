@@ -87,7 +87,7 @@ const submitOrder = async (orderData) =>{
     return { totalPrice, subtotalPrice, discount };
   },[cart]);
 
-console.log(cart.map((prod) => prod));
+
 
 
 

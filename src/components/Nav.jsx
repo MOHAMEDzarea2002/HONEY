@@ -15,7 +15,7 @@ export default function Navbar() {
   const RefNavbar = useRef();
   // handleclickouteside
   useEffect(() => {
-    const handleclickouteside = (event) => {
+    const handleClickOuteSide = (event) => {
       if (
         RefNavbar.current &&
         !RefNavbar.current.contains(event.target) &&
@@ -25,10 +25,10 @@ export default function Navbar() {
         setShowNavbar(false);
       }
     };
-    document.addEventListener('pointerdown', handleclickouteside);
-    return () => document.removeEventListener('pointerdown', handleclickouteside);
+    document.addEventListener('pointerdown', handleClickOuteSide);
+    return () => document.removeEventListener('pointerdown', handleClickOuteSide);
   }, []);
-  
+
   return (
     <div className="sticky  top-0 z-50 dark:bg-yellow-700/60  backdrop-blur-sm">
       <nav className="navbar md:container mx-auto flex   items-center  h-15 p-3 justify-between">
@@ -66,9 +66,11 @@ export default function Navbar() {
             className={`nav-links flex-col items-center space-y-8 z-100  absolute top-12  bg-black   text-white p-4 rounded-lg shadow-lg text-black min-h-screen  w-50   ${showNavbar ? '-right-3' : '-right-70'} transition-all duration-300 md:hidden `}
             ref={RefNavbar}
           >
+            {/* lOGO */}
             <li className="flex justify-center">
               <img
-                src="/src/assets/logo.jpg"
+                src="https://res.cloudinary.com/dvvfnrprr/image/upload/v1785856690/logo_afk2f1.jpg"
+                loading="lazy"
                 alt="logo"
                 className="rounded-full w-30
             "

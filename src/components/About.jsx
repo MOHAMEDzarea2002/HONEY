@@ -4,9 +4,11 @@ export default function About() {
       id="معلومات-عنا"
       className="about-section md:grid grid-cols-2  items-center gap-4   py-10 container"
     >
+      {/*  */}
       <div className="flex items-center justify-center flex-1">
         <img
           src="https://res.cloudinary.com/dvvfnrprr/image/upload/v1784017596/honey_tbr4gg.png"
+          loading="lazy"
           alt="about"
           className=" object-cover rounded-lg
       md:min-h-[600px] md:w-[500px] w-[260px] h-[400px] rotate-3

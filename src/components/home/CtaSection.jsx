@@ -14,17 +14,16 @@ export default function CtaSection() {
 
         <video
           className="h-80 w-full object-cover "
-          // autoPlay
-
-          // loop
+          autoPlay
+          loop
           playsInline
           preload="metadata"
         >
-          {/* <source
+          <source
             src={
               'https://res.cloudinary.com/dvvfnrprr/video/upload/v1786842151/CTA_SECTION_qixcr4.mp4'
             }
-          /> */}
+          />
         </video>
       </div>
       <div className=" absolute top-1/2 left-1/2 -translate-1/2  text-white   ">

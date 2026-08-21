@@ -18,13 +18,13 @@ export default function HeroSection() {
 
           <video
             className=" w-full object-cover h-[calc(100dvh-40px)] "
-            // autoPlay
+            autoPlay
             muted
-            // loop
+            loop
             playsInline
             preload="metadata"
           >
-            {/* <source src={video_hero} type="video/mp4" /> */}
+            <source src={video_hero} type="video/mp4" />
           </video>
 
           {/* Content */}

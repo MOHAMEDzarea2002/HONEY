@@ -3,8 +3,7 @@ import { createOrder } from '../../services/orderService';
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyingCart } from '../../features/cart/cartSlice';
 
-
-export default function MdShoppingCartCheckout({ isOpen, onClose,  setOrderSuccess }) {
+export default function MdShoppingCartCheckout({ isOpen, onClose, setOrderSuccess }) {
   const dispatch = useDispatch();
   // State for form data
   const [formData, setFormData] = useState({
@@ -27,11 +26,8 @@ export default function MdShoppingCartCheckout({ isOpen, onClose,  setOrderSucce
     e.preventDefault();
     try {
       await createOrder({
-        name: e.name,
-        phone: e.phone,
-        address: e.address,
+        ...formData,
         product: cartList,
-        orderedAt: new Date().toLocaleString('ar-EG'),
       });
       onClose();
       dispatch(emptyingCart());

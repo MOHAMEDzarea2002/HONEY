@@ -1,32 +1,52 @@
-import {  useState } from 'react';
-import { useCart } from '../Hooks/useCart';
-export default function MdShoppingCartCheckout({ isOpen, onClose, onSubmitAction }) {
+import { useState } from 'react';
+import { createOrder } from '../../services/orderService';
+import { useDispatch, useSelector } from 'react-redux';
+import { emptyingCart } from '../../features/cart/cartSlice';
+
+
+export default function MdShoppingCartCheckout({ isOpen, onClose,  setOrderSuccess }) {
+  const dispatch = useDispatch();
   // State for form data
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     address: '',
   });
-  // Context Cart
-  const { setCart } = useCart();
 
-  if (!isOpen) return null;
+  const { cartList } = useSelector((state) => state.cart);
 
-  const handleChangeData = (e) => {
+  // HandleForm
+  const handleForm = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
-
-  const handleSub = (e) => {
-    e.preventDefault();
-    onSubmitAction(formData);
-    onClose();
-    setFormData({ name: '', phone: '', address: '' });
-    setCart([]);
   };
 
   const idFromInput =
     formData.name.trim() === '' || formData.phone.trim() === '' || formData.address.trim() === '';
-    
+
+  const handleOrderSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await createOrder({
+        name: e.name,
+        phone: e.phone,
+        address: e.address,
+        product: cartList,
+        orderedAt: new Date().toLocaleString('ar-EG'),
+      });
+      onClose();
+      dispatch(emptyingCart());
+      setFormData({ name: '', phone: '', address: '' });
+      setOrderSuccess(true);
+      setTimeout(() => {
+        setOrderSuccess(false);
+      }, 3000);
+    } catch (err) {
+      console.log(`Error Submit data to Firebase ${err}`);
+    }
+  };
+  // check isOpen false return null
+  if (!isOpen) return null;
+
   return (
     <div
       className=" fixed w-full h-full inset-0  flex justify-center items-center  align-items-center bg-black/70 "
@@ -47,7 +67,7 @@ export default function MdShoppingCartCheckout({ isOpen, onClose, onSubmitAction
             X
           </button>
         </div>
-        <form className="w-full max-w-sm mx-auto" onSubmit={handleSub}>
+        <form className="w-full max-w-sm mx-auto" onSubmit={handleOrderSubmit}>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
             الاسم بالكامل
           </label>
@@ -58,7 +78,7 @@ export default function MdShoppingCartCheckout({ isOpen, onClose, onSubmitAction
             type="text"
             placeholder="أسمك"
             value={formData.name}
-            onChange={handleChangeData}
+            onChange={handleForm}
           />
           <label className="block text-gray-700 text-sm font-bold mb-2 mt-4" htmlFor="phone">
             رقم الهاتف
@@ -70,7 +90,7 @@ export default function MdShoppingCartCheckout({ isOpen, onClose, onSubmitAction
             type="text"
             placeholder="رقم الهاتف (مثال: 01012345678)"
             value={formData.phone}
-            onChange={handleChangeData}
+            onChange={handleForm}
           />
           <label className="block text-gray-700 text-sm font-bold mb-2 mt-4" htmlFor="address">
             العنوان بالتفصيل
@@ -82,7 +102,7 @@ export default function MdShoppingCartCheckout({ isOpen, onClose, onSubmitAction
             type="text"
             value={formData.address}
             placeholder="المحافظة - المدينة - الشارع - رقم العقار"
-            onChange={handleChangeData}
+            onChange={handleForm}
           />
 
           <button

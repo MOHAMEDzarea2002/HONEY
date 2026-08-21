@@ -2,11 +2,15 @@
 import { ImPower } from 'react-icons/im';
 import { FaMicroscope, FaHandFist  } from 'react-icons/fa6';
 import {  MdLocalFlorist } from 'react-icons/md';
+// components
+import SectionHeader from './SectionHeader';
+
 export default function Quality() {
   return (
-    <section className="py-10" id="الجودة لدينا">
-      <h1 className="text-3xl font-bold text-center ">الجودة لدينا</h1>
-      <div className="box-flex flex justify-center items-center flex-wrap gap-8 pt-8">
+    <section id="quality" className="container py-16">
+      <SectionHeader title={'الجودة لدينا'} />
+
+      <div className="box-flex flex justify-center items-center flex-wrap gap-8 mt-10">
         <div className="box  flex justify-center items-center flex-col">
           <FaHandFist className="text-5xl primary" />
           <h2 className="text-lg mt-4">تعزيز المناعة</h2>

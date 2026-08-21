@@ -1,40 +1,35 @@
+
 import { PiShootingStar } from 'react-icons/pi';
+import { Link } from 'react-router';
 
 export default function HeroSection() {
-const video_hero =
-  'https://res.cloudinary.com/dvvfnrprr/video/upload/w_1280,q_auto,f_auto,vc_auto/v1785784794/Honey_dripping_from_dipper_202605291937_rldtjy.mp4';
+  const video_hero =
+    'https://res.cloudinary.com/dvvfnrprr/video/upload/w_1280,q_auto,f_auto,vc_auto/v1785784794/Honey_dripping_from_dipper_202605291937_rldtjy.mp4';
   return (
-    <section>
+    <section id="#">
       <div className="hero-section     z-30">
         {/* Hero Image */}
-        <div
-          className="relative
-
-         "
-        >
+        <div className="relative ">
           <div
             className="absolute top-0 left-0 w-full h-full
-          dark:bg-linear-to-l bg-linear-to-t from-yellow-100/60 dark:from-black/95 to-transparent
+          dark:bg-linear-to-l bg-linear-to-r from-black/80 dark:from-black/70 to-transparent
           "
           ></div>
 
           <video
             className=" w-full object-cover h-[calc(100dvh-40px)] "
-            autoPlay
+            // autoPlay
             muted
-            loop
+            // loop
             playsInline
             preload="metadata"
           >
-            <source src={video_hero} type="video/mp4" />
+            {/* <source src={video_hero} type="video/mp4" /> */}
           </video>
 
           {/* Content */}
-          <div
-            className=" absolute top-0 left-0 w-full h-full flex items-center justify-center
-       "
-          >
-            <div className="  p-4  text-black dark:text-white ">
+          <div className=" absolute top-0 left-0 w-full h-full flex items-center justify-center ">
+            <div className=" container p-4   text-white ">
               <span className="bg-amber-50/20 px-2 py-1 rounded-lg flex  items-center w-fit gap-1 mb-4">
                 <PiShootingStar className="text-white " />
                 عمل طبيعي %100
@@ -48,12 +43,12 @@ const video_hero =
                 خيارًا مثاليًا لعشاق العسل الطبيعي والصحي.
               </p>
               <div className="buttons flex space-x-4">
-                <a
-                  href="#منتجاتنا"
-                  className="button  hover:bg-amber-100 cursor-pointer  text-black"
+                <Link
+                  to="products"
+                  className="button cursor-pointer  text-black"
                 >
                   تسوق الأن
-                </a>
+                </Link>
               </div>
             </div>
           </div>

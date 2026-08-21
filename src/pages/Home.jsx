@@ -1,44 +1,40 @@
+// component
+import HeroSection from '../components/home/HeroSection';
+import AboutUs from '../components/home/About';
+import Quality from '../components/home/Quality';
+import FeatureProduct from '../components/home/FeatureProducts';
+import CtaSection from '../components/home/CtaSection';
+import Category from '../components/home/SectionCategory';
 
-// import './App.css';
-import Navbar from '../components/Nav';
-import HeroSection from '../components/HeroSection';
-import AboutUs from '../components/About';
-import Products from '../components/Products';
-import Quality from '../components/Quality';
-import Footer from '../components/Footer';
-import Cart from '../components/Cart';
+import { useEffect } from 'react';
 
-// service
-import { getProducts } from '../services/Product.Service';
-// Hooks
-import { useFetch } from '../Hooks/useFetch';
 export default function Home() {
-  const {Loading} =useFetch(getProducts)
+  useEffect(() => {
+    const id = window.location.hash.substring(1);
 
-if (Loading)
+    if (!id) return;
+
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }, 100);
+
+  }, []);
+
+
+
+
+
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-black">
-      <div className="text-white animate-pulse text-xl">برجاء الأنتظار.....</div>
-    </div>
-  );
-  return (
-    <div className="">
-      <Navbar />
+    <main className="">
+      <HeroSection />
+      <Category/>
+      <FeatureProduct />
+      <AboutUs />
+      <Quality />
+      <CtaSection/>
 
-      <main>
-        <HeroSection />
-        <AboutUs />
-        <Products />
-        <Quality />
-
-        <Footer />
-
-
-        <Cart />
-
-
-
-      </main>
-    </div>
+    </main>
   );
 }

@@ -1,7 +1,7 @@
 :root {
   --text: #1a130f;
   --text-h: #08060d;
-  --bg: #fff;
+  /* --bg: #dd1212; */
   --primary-color: #d4af37;
   --bg-button: #d4af37;
 
@@ -25,7 +25,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --pri: #9ca3af;
-    --bg: #1a130f;
+    --bg: #070707;
     --primary-color: #d4af37;
     --text: #2b2727;
     background: linear-gradient();
@@ -35,13 +35,13 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  background-color: #F5F5F4;
   margin: 0;
-  font-family: "Changa", sans-serif;
+font-family: "Changa", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
 }
-
 
 
 

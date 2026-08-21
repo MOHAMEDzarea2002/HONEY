@@ -1,30 +1,43 @@
-
 import { MdDelete } from 'react-icons/md';
-
-const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) => {
-  const handleRemove = () => {
-    onRemove(product);
-  };
-
+import { RemoveToCart, incrementQuantity, decrementQuantity } from '../../features/cart/cartSlice';
+import { useDispatch } from 'react-redux';
+const CartCard = ({ product }) => {
+console.log(product);
+  // dispatch
+  const dispatch = useDispatch();
+  // SupTotal
   const subtotalSingleProduct = (
     product.discounts
       ? product.price * product.quantity - product.discounts * product.quantity
       : product.price * product.quantity
   ).toLocaleString('ar-EG');
 
+  // handelRemoveProduct
+  const handelRemove = () => {
+    dispatch(RemoveToCart(product.id));
+  };
+  // Decrement
+  const handelIncrement = () => {
+    dispatch(incrementQuantity(product.id));
+  };
+  // decrement
+  const handelDecrement = () => {
+    dispatch(decrementQuantity(product.id));
+  };
   return (
-    <div className={`transition-opacity duration-200 ${isRemoving ? 'opacity-0' : 'opacity-100'}`}>
+    <div>
       <div className="flex items-center justify-between bg-white rounded-xl border border-gray-100 hover:border-gray-200 transition-colors p-3 gap-3 my-2">
-        {/* image product */}
+        {/* image  */}
         <img
           src={product.image}
-          alt={product.title}
+          alt={product.name}
           className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
         />
 
-        {/* information Product*/}
+        {/* information */}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate">{product.quantity}</p>
+         
+          <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
           <div className="flex items-center gap-2 mt-1">
             {product.discounts && (
               <>
@@ -39,10 +52,11 @@ const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) =
           </div>
         </div>
 
+        {/* price and increment and Decrement  */}
         <div className="flex flex-col items-end gap-2 flex-shrink-0">
           {/* Delete*/}
           <button
-            onClick={handleRemove}
+            onClick={handelRemove}
             className="text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-md p-1 transition-colors cursor-pointer"
             aria-label="حذف المنتج"
           >
@@ -53,7 +67,7 @@ const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) =
           <div className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-gray-50">
             <button
               className="w-7 h-7 flex items-center justify-center text-gray-700 hover:bg-white transition-colors text-base cursor-pointer"
-              onClick={() => (product.quantity <= 1 ? onRemove(product) : onDecrement(product))}
+              onClick={() => (product.quantity <= 1 ? handelRemove() : handelDecrement())}
             >
               −
             </button>
@@ -62,7 +76,7 @@ const CartCard = ({ product, onRemove, onIncrement, onDecrement, isRemoving }) =
             </span>
             <button
               className="w-7 h-7 flex items-center justify-center text-gray-700 hover:bg-white transition-colors text-base cursor-pointer"
-              onClick={() => onIncrement(product)}
+              onClick={handelIncrement}
             >
               +
             </button>

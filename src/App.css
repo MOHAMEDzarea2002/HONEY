@@ -27,3 +27,7 @@
   -ms-transition: background-color 0.3s ease;
   -o-transition: background-color 0.3s ease;
 }
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
+}
